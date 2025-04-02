@@ -17,7 +17,7 @@ namespace TicketFunctionsApp {
         }
 
         [Function(nameof(Function1))]
-        public async void Run([QueueTrigger("ticketqueue", Connection = "AzureWebJobsStorage")] QueueMessage message) {
+        public async Task Run([QueueTrigger("ticketqueue", Connection = "AzureWebJobsStorage")] QueueMessage message) {
             _logger.LogInformation($"C# Queue trigger function processed: {message.MessageText}");
             var options = new JsonSerializerOptions {
                 PropertyNameCaseInsensitive = true
