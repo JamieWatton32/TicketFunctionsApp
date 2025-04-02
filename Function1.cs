@@ -33,15 +33,15 @@ namespace TicketFunctionsApp {
                 await connection.OpenAsync();
                 string query = @"
                 INSERT INTO ConcertOrders 
-                (TicketId, Email, Name, Phone, Quantity, CreditCard, Expiration, SecurityCode, 
+                (ConcertId, Email, Name, Phone, Quantity, CreditCard, Expiration, SecurityCode, 
                  Address, City, Province, PostalCode, Country) 
                 VALUES 
-                (@TicketId, @Email, @Name, @Phone, @Quantity, @CreditCard, @Expiration, @SecurityCode, 
+                (@ConcertId, @Email, @Name, @Phone, @Quantity, @CreditCard, @Expiration, @SecurityCode, 
                  @Address, @City, @Province, @PostalCode, @Country)";
 
                 using (SqlCommand command = new SqlCommand(query, connection)) {
                     // Parameters
-                    command.Parameters.AddWithValue("@TicketId", ticket.ConcertId);
+                    command.Parameters.AddWithValue("@ConcertId", ticket.ConcertId);
                     command.Parameters.AddWithValue("@Email", ticket.Email);
                     command.Parameters.AddWithValue("@Name", ticket.Name);
                     command.Parameters.AddWithValue("@Phone", ticket.Phone);
