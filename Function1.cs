@@ -32,13 +32,12 @@ namespace TicketFunctionsApp {
             using (SqlConnection connection = new SqlConnection(connectionString)) {
                 await connection.OpenAsync();
                 string query = @"
-                INSERT INTO ConcertOrders 
-                (ConcertId, Email, Name, Phone, Quantity, CreditCard, Expiration, SecurityCode, 
-                 Address, City, Province, PostalCode, Country) 
-                VALUES 
-                (@ConcertId, @Email, @Name, @Phone, @Quantity, @CreditCard, @Expiration, @SecurityCode, 
-                 @Address, @City, @Province, @PostalCode, @Country)";
-
+                    INSERT INTO ConcertOrders 
+                    (ConcertId, Email, Name, Phone, Quantity, CreditCard, Expiration, SecurityCode, 
+                     Address, City, Province, PostalCode, Country) 
+                    VALUES 
+                    (@ConcertId, @Email, @Name, @Phone, @Quantity, @CreditCard, @Expiration, @SecurityCode, 
+                     @Address, @City, @Province, @PostalCode, @Country)"; //Id Column removed
                 using (SqlCommand command = new SqlCommand(query, connection)) {
                     // Parameters
                     command.Parameters.AddWithValue("@ConcertId", ticket.ConcertId);
